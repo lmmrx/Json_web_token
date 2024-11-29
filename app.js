@@ -19,7 +19,7 @@ app.post('/user/generateToken/', (req, res) => {
 app.get('/user/validateToken', (req, res) => {
     
     const secret_key = 'supersecretkey';
-    const token = req.header.authorization.split(' ')[1];
+    const token = req.header('Authorization')?.split(' ')[1];
 
     try {
         const verified = jwt.verify(token, secret_key);
